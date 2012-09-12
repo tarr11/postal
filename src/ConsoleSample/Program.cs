@@ -5,6 +5,22 @@ using Postal;
 
 namespace ConsoleSample
 {
+    public class Model : Postal.Email
+    {
+        public Model()
+            : base("Test")
+        {
+
+        }
+
+        public string Message
+        {
+            get;
+            set;
+        }
+
+    }
+
     class Program // That's right, no asp.net runtime required!
     {
         static void Main(string[] args)
@@ -17,7 +33,7 @@ namespace ConsoleSample
 
             var service = new EmailService(engines);
 
-            dynamic email = new Email("Test");
+            var email = new Model();
             email.Message = "Hello, non-asp.net world!";
             service.Send(email);
 
